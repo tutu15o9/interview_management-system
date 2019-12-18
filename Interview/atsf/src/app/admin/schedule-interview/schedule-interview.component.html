@@ -1,0 +1,297 @@
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+  <div class="container" style="padding-bottom: 20px;width:100%">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="jobId">Select Job:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          *ngIf="jobs"
+          (change)="jobSelected($event)"
+          formControlName="jobId"
+          id="jobId"
+          class="form-control"
+        >
+          <option
+            class="option-right"
+            *ngFor="let job of jobs"
+            value="{{ job._id }}"
+            >{{ job.jobId }} {{ job.category }} {{ job.designation }}</option
+          >
+        </select>
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('jobId').errors && formgroup.get('jobId').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('jobId').errors && formgroup.get('jobId').touched
+            "
+          >
+            <span *ngIf="formgroup.get('jobId').errors">
+              Job Required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="candidateId"
+          >Select Candidate:<b style="color:red">*</b></label
+        >
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          *ngIf="appliedInfo"
+          formControlName="candidateId"
+          (change)="candidateSelected()"
+          class="form-control"
+        >
+          <option></option>
+          <option
+            *ngFor="let item of appliedInfo"
+            value="{{ item.candidateId._id }}"
+            >{{ item.candidateId.name }} {{ item.candidateId.email }}</option
+          >
+        </select>
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('candidateId').errors &&
+              formgroup.get('candidateId').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('candidateId').errors &&
+              formgroup.get('candidateId').touched
+            "
+          >
+            <span *ngIf="formgroup.get('candidateId').errors">
+              Candidate Required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let item of interviewsDone">
+    <div class="row" style="padding-left: 10%">
+      Interview held on {{ item.date | date }} at {{ item.time }} hours by
+      {{ item.interviewerId.email }} Comment {{ item.comment }}
+    </div>
+  </div>
+  <div class="card">
+    <br />
+    <p style="font-size: 20px; color:indianred; padding-left:10%">
+      Choose Interviewer
+    </p>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="category">Department:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="category"
+          (change)="categorySelected($event)"
+          *ngIf="category"
+          class="form-control"
+        >
+          <option></option>
+          <option
+            *ngFor="let profile of category"
+            value="{{ profile.category }}"
+            >{{ profile.category }}</option
+          >
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="designation">Position:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="designation"
+          (change)="designationSelected($event)"
+          *ngIf="designation"
+          class="form-control"
+        >
+          <option></option>
+          <option *ngFor="let level of designation" value="{{ level }}">{{
+            level
+          }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="interviewerId"
+          >Interviewer<b style="color:red">**</b></label
+        >
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="interviewerId"
+          formControlName="interviewerId"
+          *ngIf="interviewers"
+          class="form-control"
+        >
+          <option
+            *ngFor="let interviewer of interviewers"
+            value="{{ interviewer._id }}"
+            >{{ interviewer.email }}</option
+          >
+        </select>
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('interviewerId').errors &&
+              formgroup.get('interviewerId').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('interviewerId').errors &&
+              formgroup.get('interviewerId').touched
+            "
+          >
+            <span *ngIf="formgroup.get('interviewerId').errors">
+              Interviewer Required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="date">Date:<b style="color:red">**</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="date"
+          id="date"
+          formControlName="date"
+          class="form-control"
+          min="{{ date }}"
+        />
+
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('date').errors && formgroup.get('date').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('date').errors && formgroup.get('date').touched
+            "
+          >
+            <span *ngIf="formgroup.get('date').errors">
+              Date Required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="time">Start Time:<b style="color:red">**</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="time"
+          id="time"
+          formControlName="time"
+          placeholder="like 1700 (24 hr format)"
+          class="form-control"
+        />
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('time').errors && formgroup.get('time').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('time').errors && formgroup.get('time').touched
+            "
+          >
+            <span *ngIf="formgroup.get('time').errors">
+              Time Required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-3">
+        <button
+          type="submit"
+          class="custom-button"
+          [disabled]="!this.formgroup.valid"
+        >
+          Schedule Next Interview
+        </button>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-2">
+        <button
+          type="button"
+          style="border:2px solid green;background-color: honeydew"
+          (click)="acceptApplication()"
+          [disabled]="
+            !formgroup.controls['jobId'].valid ||
+            !formgroup.controls['candidateId'].valid
+          "
+        >
+          Hire
+        </button>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <button
+          type="button"
+          style="border:2px solid red;background-color: honeydew"
+          (click)="rejectApplication()"
+          [disabled]="
+            !formgroup.controls['jobId'].valid ||
+            !formgroup.controls['candidateId'].valid
+          "
+        >
+          Reject
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,40 @@
+<div class="navbar">
+  <ul>
+    <li>
+      <a
+        [routerLink]="['/admin/addinterviewer']"
+        [class.active]="a"
+        (click)="a1()"
+        >Add Interviewer</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/admin//addjob']" [class.active]="b" (click)="b1()"
+        >Add Job</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/admin/addcategory']" [class.active]="c" (click)="c1()"
+        >Add Department</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/admin/adddesignation']"
+        [class.active]="d"
+        (click)="d1()"
+        >Add Position</a
+      >
+    </li>
+    <li>
+      <a
+        [routerLink]="['/admin/scheduleinterview']"
+        [class.active]="e"
+        (click)="e1()"
+        >Schedule Interview</a
+      >
+    </li>
+    <li><a [routerLink]="['#']" (click)="logout()">Log Out</a></li>
+  </ul>
+</div>
+<router-outlet></router-outlet>

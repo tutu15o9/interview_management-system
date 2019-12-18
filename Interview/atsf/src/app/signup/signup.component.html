@@ -1,0 +1,366 @@
+<div class="row">
+  <div class="col-sm-2">
+    <button type="button" class="custom-button" (click)="login()">
+      Back to Login ->
+    </button>
+  </div>
+</div>
+<br />
+<br />
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+  <div class="container" style="padding: 20px;">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2 ">
+        <label class="mail" for="name">Name: <b style="color:red">*</b></label>
+      </div>
+
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6 formgroup">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+        />
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('name').errors && formgroup.get('name').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('name').errors && formgroup.get('name').touched
+            "
+          >
+            <span *ngIf="formgroup.get('name').errors">
+              Full Name is required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label class="mail" for="email"
+          >Email: <b style="color:red">*</b></label
+        >
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6  form-group">
+        <input
+          type="email"
+          class=" form-control"
+          id="email"
+          formControlName="email"
+        />
+
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('email').errors && formgroup.get('email').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('name').errors && formgroup.get('email').touched
+            "
+          >
+            <span *ngIf="formgroup.get('email').errors">
+              Should be of type email
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="phoneNumber" class="mail"
+          >Phone Number <b style="color:red">*</b></label
+        >
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6 form-group">
+        <input
+          type="number"
+          id="phoneNumber"
+          class="form-control"
+          formControlName="phoneNumber"
+        />
+
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('phoneNumber').errors &&
+              formgroup.get('phoneNumber').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('phoneNumber').errors &&
+              formgroup.get('phoneNumber').touched
+            "
+          >
+            <span *ngIf="formgroup.get('phoneNumber').errors">
+              Incorrect Phone Number
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label class="mail" for="password"
+          >Password <b style="color:red">*</b></label
+        >
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6  form-group">
+        <input
+          type="password"
+          class=" form-control"
+          id="password"
+          formControlName="password"
+        />
+
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('password').errors &&
+              formgroup.get('password').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('password').errors &&
+              formgroup.get('password').touched
+            "
+          >
+            <span *ngIf="formgroup.get('password').errors">
+              Atleast 2 digit
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label class="mail" for="experienceMonth">Experience Month</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6  form-group">
+        <input
+          type="number"
+          class=" form-control"
+          id="experienceMonth"
+          formControlName="experienceMonth"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label class="mail" for="experienceYear">Experience Year</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6  form-group">
+        <input
+          type="number"
+          class=" form-control"
+          id="experienceYear"
+          formControlName="experienceYear"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <form [formGroup]="employeerForm" (ngSubmit)="onEmployeerUpdate()">
+      <br /><br />
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 ">
+          <label class="mail" for="prevEmployeer">Employeer:</label>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6 formgroup">
+          <input
+            type="text"
+            class="form-control"
+            id="prevEmployeer"
+            formControlName="prevEmployeer"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 ">
+          <label class="mail" for="joiningDate">Joining Date</label>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6 formgroup">
+          <input
+            type="date"
+            class="form-control"
+            id="joiningDate"
+            formControlName="joiningDate"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 ">
+          <label class="mail" for="leavingDate">Leaving Date</label>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6 formgroup">
+          <input
+            type="date"
+            class="form-control"
+            id="leavingDate"
+            formControlName="leavingDate"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 ">
+          <label class="mail" for="role">Role</label>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6 formgroup">
+          <input
+            type="text"
+            class="form-control"
+            id="role"
+            formControlName="role"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-6"></div>
+        <button type="reset" class="secondary-button">Reset</button>
+        <button type="submit" class="custom-button">
+          Append employer Detail
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="card">
+    <form [formGroup]="educationalForm" (ngSubmit)="onEducationalUpdate()">
+      <br /><br />
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 ">
+          <label class="mail" for="degree">Degree</label>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6 formgroup">
+          <input
+            type="text"
+            class="form-control"
+            id="degree"
+            formControlName="degree"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 ">
+          <label class="mail" for="completionDate">Completion-Date</label>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6 formgroup">
+          <input
+            type="date"
+            class="form-control"
+            id="completionDate"
+            formControlName="completionDate"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-2 ">
+          <label class="mail" for="college">College</label>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-6 formgroup">
+          <input
+            type="text"
+            class="form-control"
+            id="college"
+            formControlName="college"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-6"></div>
+        <button type="reset" class="secondary-button">Reset</button>
+        <button type="submit" class="custom-button">
+          Append Educational Detail
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">
+      <label class="mail" for="defaultResumeLink">Resume</label>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6 formgroup">
+      <input
+        type="file"
+        class="form-control"
+        id="defaultResumeLink"
+        (change)="resumeChanged($event)"
+        accept="text/plain,.doc, .docx,.ppt, .pptx,.txt,.pdf"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">
+      <label class="mail" for="video">Video</label>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6 formgroup">
+      <input
+        type="file"
+        class="form-control"
+        id="video"
+        (change)="videoChanged($event)"
+        accept="video/mp4,video/x-m4v,video/*"
+      />
+    </div>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <button type="reset" class="secondary-button">Reset</button>
+    <div class="col-sm-1"></div>
+    <button
+      type="submit"
+      class="custom-button"
+      [disabled]="!this.formgroup.valid"
+    >
+      Signup
+    </button>
+  </div>
+</form>

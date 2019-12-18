@@ -1,0 +1,99 @@
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()" name="login-form">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h1 class="text-center">Log In</h1>
+      </div>
+      <div class="fadeIn second"></div>
+      <label for="email">Email <b style="color:red">*</b></label>
+      <br />
+      <input
+        type="text"
+        id="email"
+        formControlName="email"
+        class="fadeIn second"
+        required
+      />
+      <div
+        [ngClass]="{
+          'has-error':
+            formgroup.get('email').errors && formgroup.get('email').touched
+        }"
+      >
+        <span
+          class="help-block"
+          *ngIf="
+            formgroup.get('email').errors && formgroup.get('email').touched
+          "
+        >
+          <span *ngIf="formgroup.get('email').errors">
+            Enter email
+          </span>
+        </span>
+      </div>
+      <br />
+      <label for="pwd">Password <b style="color:red">*</b></label>
+      <br />
+      <input
+        id="pwd"
+        formControlName="password"
+        class="fadeIn third additional"
+        type="password"
+      />
+      <div
+        [ngClass]="{
+          'has-error':
+            formgroup.get('password').errors &&
+            formgroup.get('password').touched
+        }"
+      >
+        <span
+          class="help-block"
+          *ngIf="
+            formgroup.get('password').errors &&
+            formgroup.get('password').touched
+          "
+        >
+          <span *ngIf="formgroup.get('password').errors">
+            Too Short Password
+          </span>
+        </span>
+      </div>
+      <input
+        type="submit"
+        class="fadeIn fourth"
+        [disabled]="!this.formgroup.valid"
+        value="Log In"
+      />
+      <input
+        type="button"
+        (click)="signup()"
+        class="fadeIn fourth"
+        value="SignUp"
+      />
+    </div>
+  </div>
+</form>
+<!-- <div class="wrapper fadeInDown">
+      <div id="formContent"> -->
+<!-- Tabs Titles -->
+
+<!-- Icon -->
+<!-- <div class="fadeIn first">
+          <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+        </div> -->
+
+<!-- Login Form -->
+<!-- <form>
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+          <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+          <input type="submit" class="fadeIn fourth" value="Log In">
+        </form> -->
+
+<!-- Remind Passowrd -->
+<!-- <div id="formFooter">
+          <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+
+      </div>
+    </div> -->

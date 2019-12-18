@@ -1,0 +1,163 @@
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+  <div class="container" style="padding-bottom: 20px;width:100%">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="email">Email:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+        />
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('email').errors && formgroup.get('email').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('email').errors && formgroup.get('email').touched
+            "
+          >
+            <span *ngIf="formgroup.get('email').errors">
+              Email Necessary
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="password">Password:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+        />
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('password').errors &&
+              formgroup.get('password').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('password').errors &&
+              formgroup.get('password').touched
+            "
+          >
+            <span *ngIf="formgroup.get('password').errors">
+              Too Short Password
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="category">Department:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="category"
+          formControlName="category"
+          (change)="categorySelected($event)"
+          class="form-control"
+          *ngIf="category"
+        >
+          <option
+            *ngFor="let profile of category"
+            value="{{ profile.category }}"
+            >{{ profile.category }}</option
+          >
+        </select>
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('category').errors &&
+              formgroup.get('category').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('category').errors &&
+              formgroup.get('category').touched
+            "
+          >
+            <span *ngIf="formgroup.get('category').errors">
+              Department Required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="designation">Position:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="designation"
+          formControlName="designation"
+          class="form-control"
+        >
+          <option></option>
+          <option *ngFor="let level of designation" value="{{ level }}">{{
+            level
+          }}</option>
+        </select>
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('designation').errors &&
+              formgroup.get('designation').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('designation').errors &&
+              formgroup.get('designation').touched
+            "
+          >
+            <span *ngIf="formgroup.get('designation').errors">
+              Position Required
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <button
+          type="submit"
+          class="custom-button"
+          [disabled]="!this.formgroup.valid"
+        >
+          Add Interviewer
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

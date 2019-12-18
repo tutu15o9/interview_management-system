@@ -1,0 +1,9 @@
+<div class="container">
+  <p style="color:royalblue">Go on Detail page to apply for post</p>
+  <div
+    *ngFor="let job of jobs"
+    style="display: flex; flex-direction: column;margin-bottom:10%"
+  >
+    <app-job-card [job]="job"></app-job-card>
+  </div>
+</div>

@@ -1,0 +1,273 @@
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+  <div class="container" style="padding: 20px;width:100%">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="category">Department:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="category"
+          formControlName="category"
+          (change)="categorySelected($event)"
+          class="form-control"
+        >
+          <option
+            *ngFor="let profile of category"
+            value="{{ profile.category }}"
+            >{{ profile.category }}</option
+          >
+        </select>
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('category').errors &&
+              formgroup.get('category').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('category').errors &&
+              formgroup.get('category').touched
+            "
+          >
+            <span *ngIf="formgroup.get('category').errors">
+              Required Field
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="designation">Position:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="designation"
+          formControlName="designation"
+          class="form-control"
+        >
+          <option *ngFor="let level of designation" value="{{ level }}">{{
+            level
+          }}</option>
+        </select>
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('designation').errors &&
+              formgroup.get('designation').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('designation').errors &&
+              formgroup.get('designation').touched
+            "
+          >
+            <span *ngIf="formgroup.get('designation').errors">
+              Required Field
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="description">Description:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <textarea
+          id="description"
+          formControlName="description"
+          class="form-control"
+        ></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="blockJobId">Block Job Ids:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <select
+          id="blockJobId"
+          formControlName="blockJobId"
+          multiple
+          class="form-control"
+        >
+          <option *ngFor="let job of jobs" value="{{ job._id }}"
+            >{{ job.jobId }} {{ job.category }} {{ job.designation }}</option
+          >
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="lastdate">Last date:<b style="color:red">*</b></label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="date"
+          id="lastDate"
+          formControlName="lastDate"
+          class="form-control"
+          min="{{ date }}"
+        />
+        <div
+          [ngClass]="{
+            'has-error':
+              formgroup.get('lastDate').errors &&
+              formgroup.get('lastDate').touched
+          }"
+        >
+          <span
+            class="help-block"
+            *ngIf="
+              formgroup.get('lastDate').errors &&
+              formgroup.get('lastDate').touched
+            "
+          >
+            <span *ngIf="formgroup.get('lastDate').errors">
+              Required Field
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="paySalary">Pay Scale:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="number"
+          id="paySalary"
+          formControlName="paySalary"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="location">Location:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="text"
+          id="location"
+          formControlName="location"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="bondDetail">Bond Detail:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="text"
+          id="bondDetail"
+          formControlName="bondDetail"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="experienceYear">Experience Year:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="number"
+          id="experienceYear"
+          formControlName="experienceYear"
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label for="experienceMonth">Experience Month:</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <input
+          type="number"
+          id="experienceMonth"
+          formControlName="experienceMonth"
+          class="form-control"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="card" style="height: 50%; width:75%">
+    <form [formGroup]="skillform" (ngSubmit)="onSkillSubmit()">
+      <br /><br />
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+          <input
+            type="text"
+            placeholder="add skill name"
+            formControlName="skillName"
+            class="form-control"
+          />
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4">
+          <input
+            type="text"
+            placeholder="add skill level"
+            formControlName="skillLevel"
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-5"></div>
+
+        <button type="reset" class="secondary-button">Reset</button>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-1">
+          <button type="submit" class="custom-button">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-sm-6"></div>
+    <button
+      type="submit"
+      class="custom-button"
+      [disabled]="!this.formgroup.valid"
+    >
+      Add Job
+    </button>
+  </div>
+</form>

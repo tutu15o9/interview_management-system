@@ -1,0 +1,44 @@
+<div class="container">
+  <form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+    <br /><br />
+    <div class="row" style="width: 80%">
+      <div class="col-sm-2"></div>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Enter New Department Name"
+        formControlName="category"
+      />
+
+      <div
+        [ngClass]="{
+          'has-error':
+            formgroup.get('category').errors &&
+            formgroup.get('category').touched
+        }"
+      >
+        <span
+          class="help-block"
+          *ngIf="
+            formgroup.get('category').errors &&
+            formgroup.get('category').touched
+          "
+        >
+          <span *ngIf="formgroup.get('category').errors">
+            Too Short Department Name
+          </span>
+        </span>
+      </div>
+    </div>
+    <br /><br />
+    <div class="row">
+      <button
+        type="submit"
+        class="secondary-button"
+        [disabled]="!this.formgroup.valid"
+      >
+        Add Department
+      </button>
+    </div>
+  </form>
+</div>

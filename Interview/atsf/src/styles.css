@@ -1,0 +1,131 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Francois+One');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+/* body {
+  margin: 0;
+} */
+body {
+  font-family: 'Francois One', sans-serif;
+  font-size: 15px;
+  background-color: #f2f2f2;
+}
+iframe {
+  width: 70%;
+  height: 400px;
+  border: 2px solid #790e8b;
+}
+#toast-container > div {
+  opacity: 1;
+}
+button {
+  padding: 10px;
+  margin: 4px;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  width: 150px;
+}
+.custom-button {
+  background-color: #790e8b;
+  border: 2px solid #790e8b;
+  color: #f2f2f2;
+}
+.secondary-button {
+  background-color: #fffde7;
+  border: 2px solid #790e8b;
+  color: #790e8b;
+}
+p {
+  font-size: 16px;
+}
+
+.custom-button:disabled {
+  border: 2px solid red;
+  background-color: red;
+  color: #f2f2f2;
+  cursor: not-allowed;
+}
+.custom-button:hover {
+  box-shadow: 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+tr {
+  border-top: 0.5px solid black;
+}
+td {
+  padding: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+th {
+  text-align: center;
+  font-size: 16px;
+}
+.navbar {
+  /* margin-top: 5px; */
+  /* margin-left: 30px; */
+}
+.navbar-default {
+  background-color: #790e8b;
+}
+.navbar-default .navbar-brand {
+  color: #f2f2f2;
+}
+.navbar-default .navbar-brand:hover {
+  color: #f2f2f2;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #f2f2f2;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #f2f2f2;
+  font-size: 15px;
+}
+.navbar-default .navbar-nav > li > a:focus {
+  color: #f2f2f2;
+}
+.navbar-nav > li:hover {
+  background-color: #9c27b0;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  color: #f2f2f2;
+  background-color: #9c27b0;
+}
+.card {
+  background-color: #fffde7;
+  width: 80%;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+  margin: 5px;
+  margin-left: 70px;
+  padding: 5px;
+  height: 300px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.profileButton {
+  cursor: pointer;
+}
+.footer {
+  margin-bottom: 10px;
+  margin-top: 120px;
+  height: 120px;
+  padding-top: 60px;
+  position: relative;
+  background-color: rgb(226, 222, 235);
+}
+.header {
+  font-family: 'Lobster', cursive;
+  height: 60px;
+  font-size: 20px;
+  background-color: whitesmoke;
+  color: azure;
+  padding-top: 10px;
+  padding-left: 30px;
+}

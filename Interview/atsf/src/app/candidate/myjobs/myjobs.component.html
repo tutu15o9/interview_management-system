@@ -1,0 +1,77 @@
+<br />
+<div class="container" *ngIf="appliedJobs">
+  <div
+    class="card"
+    style="background-color: white;border:1px solid blue ;display: flex; flex-direction: column;margin-bottom:10%"
+    *ngFor="let appliedJob of appliedJobs"
+  >
+    <br />
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Job Id</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color: hotpink">
+        {{ appliedJob.jobId._id }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Department</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color:hotpink">
+        {{ appliedJob.jobId.category }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Post</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color:hotpink">
+        {{ appliedJob.jobId.designation }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Description</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color:hotpink">
+        {{ appliedJob.jobId.description }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Status</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color:hotpink">
+        {{ appliedJob.status }}
+      </div>
+    </div>
+    <div *ngIf="appliedJob.status == 'InterviewScheduled'">
+      <div class="row">
+        <div class="col-sm-4"></div>
+
+        <div *ngFor="let timing of appliedLatest">
+          <div *ngIf="appliedJob.jobId._id">
+            <div style="color:hotpink">
+              Interview at {{ timing.time }} on {{ timing.date | date }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

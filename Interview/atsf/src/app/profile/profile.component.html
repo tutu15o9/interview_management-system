@@ -1,0 +1,128 @@
+<br />
+<div
+  class="container"
+  style="background-color:white;border:1px solid blue; height:auto"
+>
+  <div class="row">
+    <button class="secondary-button" (click)="login()">
+      Back to DashBoard
+    </button>
+    <div class="col-sm-8"></div>
+    <button class="custom-button" style="box-align: right" (click)="logout()">
+      Log Out
+    </button>
+  </div>
+  <div *ngIf="myProfile">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">Name:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6" style="color:hotpink">{{ myProfile.name }}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">Email:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6" style="color:hotpink">{{ myProfile.email }}</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">PhoneNumber:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6" style="color:hotpink">
+        {{ myProfile.phoneNumber }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">Experience Month:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6" style="color:hotpink">
+        {{ myProfile.experienceMonth }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">Experience Year:</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6" style="color:hotpink">
+        {{ myProfile.experienceYear }}
+      </div>
+    </div>
+
+    <div class="card" *ngIf="myProfile.employeer" style="height:auto">
+      <p>Previous Employeer of :</p>
+      <div *ngFor="let item of myProfile.employeer">
+        <div class="row" style="font-size:20px">
+          <div class="col-sm-1"></div>
+          {{ item.prevEmployeer }}
+        </div>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          From {{ item.joiningDate | date }} to {{ item.leavingDate | date }}
+        </div>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          Role {{ item.role }}
+        </div>
+        <br />
+      </div>
+    </div>
+    <div class="card" *ngIf="myProfile.educational" style="height:auto">
+      <p>Educational Background :</p>
+
+      <div *ngFor="let item of myProfile.educational">
+        <div class="row" style="font-size:20px">
+          <div class="col-sm-1"></div>
+          {{ item.degree }}
+        </div>
+
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-2">
+            <label>Completion Date</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-6" style="color:hotpink">
+            {{ item.completionDate | date }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-2">
+            <label>College</label>
+          </div>
+          <div class="col-sm-1"></div>
+          <div class="col-sm-6" style="color:hotpink">
+            {{ item.college }}
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-sm-1"></div>
+    Resume
+  </div>
+  <div class="text-center">
+    <iframe
+      style="padding-left: 20px "
+      [src]="getFileUrl(myProfile.defaultResumeLink) | safe"
+    ></iframe>
+  </div>
+  <div class="text-center">
+    <br /><br />
+    <div class="row">
+      <div class="col-sm-1"></div>
+      Introductory Video
+    </div>
+
+    <iframe [src]="getFileUrl(myProfile.video) | safe"></iframe>
+  </div>
+</div>
+<!-- defaultResumeLink: { type: String }, video: { type: String }, -->

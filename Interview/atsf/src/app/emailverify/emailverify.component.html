@@ -1,0 +1,10 @@
+<div class="card">
+  <p>Email verify status</p>
+  <div *ngIf="emailStatus">
+    <p>EMAIL VERIFIED SUCCESSFULLY</p>
+    <a [routerLink]="['/admin/addinterviewer']">Add Interviewer</a>
+  </div>
+  <div *ngIf="!emailStatus">
+
+  </div>
+</div>

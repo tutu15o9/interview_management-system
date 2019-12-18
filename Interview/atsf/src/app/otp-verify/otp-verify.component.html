@@ -1,0 +1,16 @@
+<div class="container">
+  <button type="button" class="custom-button" (click)="sendOtpEvent($event)">
+    Verify email and phone
+  </button>
+  <div class="row">
+    <div class="col-sm-6 form-group">
+      <label>
+        OTP: <b style="color:red">*</b>
+        <input type="text" class="form-control" (input)="otpEvent($event)" />
+      </label>
+    </div>
+  </div>
+  <button type="button" class="custom-button" (click)="verifyOtpEvent($event)">
+    Verify OTP
+  </button>
+</div>

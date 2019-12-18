@@ -1,0 +1,52 @@
+<div class="card" style="background-color: white; border:1px solid blue">
+  <div *ngIf="job">
+    <br />
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>JobID</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2" style="color:hotpink">
+        {{ job.jobId }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Post</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color:hotpink">
+        {{ job.designation }} in {{ job.category }} Department
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Job Detail</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color:hotpink">
+        {{ job.description }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">
+        <label>Last Date</label>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-4" style="color:hotpink">
+        {{ job.lastDate | date }}
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <button type="button" class="custom-button" (click)="jobDetail()">
+        Check Detail
+      </button>
+    </div>
+  </div>
+</div>

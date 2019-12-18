@@ -1,0 +1,97 @@
+<br />
+<div
+  class="container"
+  style="background-color:white;border:1px solid blue; height:auto"
+>
+  <div class="row">
+    <button class="secondary-button" (click)="login()">
+      Back to DashBoard
+    </button>
+    <div class="col-sm-8"></div>
+    <button class="custom-button" style="box-align: right" (click)="logout()">
+      Log Out
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">JobId:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.jobId }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Department:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.category }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Position:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.designation }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Job Detail:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.description }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Last Date:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.lastDate | date }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Pay Scale:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.paySalary }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Location:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.location }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Bond Detail:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">{{ job.bondDetail }}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2">Experience Required:</div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6" style="color:hotpink">
+      {{ job.experienceYear }} Year and {{ job.experienceMonth }} Months
+    </div>
+  </div>
+
+  <div *ngIf="job.blockJobId">
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-2">Block Job Id:</div>
+      <div class="col-sm-1"></div>
+
+      <div class="col-sm-6" style="color:hotpink">
+        <div *ngFor="let item of job.blockJobId">{{ item }},</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div *ngIf="job.isComplete">
+      Process is Complete for this opening
+    </div>
+    <div *ngIf="!job.isComplete">
+      <div *ngIf="canApply">
+        <button type="button" class="custom-button" (click)="onSubmit()">
+          Apply
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

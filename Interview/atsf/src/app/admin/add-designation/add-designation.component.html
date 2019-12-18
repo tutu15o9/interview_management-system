@@ -1,0 +1,86 @@
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+  <br /><br />
+  <div class="row" *ngIf="category">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2 ">
+      <label for="category">Department:<b style="color:red">*</b></label>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6 formgroup">
+      <select id="category" formControlName="category" class="form-control">
+        <option
+          *ngFor="let profile of category"
+          value="{{ profile.category }}"
+          >{{ profile.category }}</option
+        >
+      </select>
+      <div
+        [ngClass]="{
+          'has-error':
+            formgroup.get('category').errors &&
+            formgroup.get('category').touched
+        }"
+      >
+        <span
+          class="help-block"
+          *ngIf="
+            formgroup.get('category').errors &&
+            formgroup.get('category').touched
+          "
+        >
+          <span *ngIf="formgroup.get('category').errors">
+            Department Name required
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-2 ">
+      <label class="mail" for="designation"
+        >Position:<b style="color:red">*</b></label
+      >
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
+      <input
+        type="text"
+        id="designation"
+        formControlName="designation"
+        class="form-control"
+      />
+      <div
+        [ngClass]="{
+          'has-error':
+            formgroup.get('designation').errors &&
+            formgroup.get('designation').touched
+        }"
+      >
+        <span
+          class="help-block"
+          *ngIf="
+            formgroup.get('designation').errors &&
+            formgroup.get('designation').touched
+          "
+        >
+          <span *ngIf="formgroup.get('designation').errors">
+            Too Short Position Name
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <div class="row">
+    <div class="col-sm-6"></div>
+    <button
+      type="submit"
+      class="secondary-button"
+      [disabled]="!this.formgroup.valid"
+    >
+      Add Post
+    </button>
+  </div>
+</form>
